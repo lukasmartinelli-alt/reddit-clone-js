@@ -1,0 +1,29 @@
+/* ===LAYOUT STRUCTURE=== */
+.top {
+	padding: 0;
+	min-height: 25rem;
+}
+
+.header {
+	overflow: hidden;
+	*zoom: 1;
+}
+
+.main {
+	margin-top: 1rem;
+	padding: 1rem;
+}
+
+.header {
+	padding: 1rem;
+	background-color: #D2DDE5;
+}
+
+.header img {
+	max-height: 4.8rem;
+	margin-bottom: -0.8rem;
+}
+
+.branding {
+	float: left;
+}

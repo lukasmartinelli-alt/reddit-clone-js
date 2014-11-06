@@ -1,0 +1,261 @@
+/* ===RESET=== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+html {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+	vertical-align: middle;
+}
+
+q, blockquote {
+	quotes: none;
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+	content: "";
+	content: none;
+}
+
+a img {
+	border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	main, menu, nav, section, summary {
+	display: block;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+/* ===TYPOGRAPHY=== */
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background: #fff;
+	font-size: 1.6rem;
+	line-height: 1.82rem;
+	font-family: 'Istok Web', sans-serif;
+	color: #333;
+}
+
+h1, h2, h3, h4, h5, h6, nav a {
+	font-family: 'Istok Web', sans-serif;
+}
+
+h1 {
+	font-size: 4.8rem;
+	font-weight: 400;
+	color: #155183;
+	line-height: 1em;
+	margin-bottom: 2rem;
+}
+
+h2 {
+	font-size: 3.6rem;
+	line-height: 4.6rem;
+}
+
+h3 {
+	font-size: 2rem;
+	line-height: 2.6rem;
+}
+
+h4 {
+	font-size: 1.6rem;
+	line-height: 2.08rem;
+}
+
+em, strong {
+	font-weight: 700;
+}
+
+p {
+	margin: 0 auto 0.5em;
+}
+
+hr {
+	border: solid #D2DDE5;
+	border-width: 1px 0 0;
+	clear: both;
+	margin: 1rem 0 1.5rem;
+	height: 0;
+}
+
+/* ===LISTS=== */
+ul>li {
+	list-style: disc inside;
+	padding-left: 1rem;
+}
+
+/* ===LINKS=== */
+a {
+	color: #155183;
+	text-decoration: none;
+	outline: 0;
+}
+
+a:hover, a:focus {
+	color: #41586e;
+}
+
+/* ===FORMS=== */
+form, fieldset {
+	margin-bottom: 1rem;
+}
+
+button, a.button, input, select, textarea {
+	font-size: 1.6rem;
+	padding: 0.8rem 1.2rem;
+	outline: none;
+}
+
+.control-group {
+	*zoom: 1;
+}
+
+.control-group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+label {
+	color: #666;
+	display: block;
+	margin-bottom: 0.5rem;
+}
+.ui-datagrid-content {
+   border: none;
+}  
+
+input, select, textarea {
+	width: 100%;
+	-moz-transition: border-color, 0.3s;
+	-o-transition: border-color, 0.3s;
+	-webkit-transition: border-color, 0.3s;
+	transition: border-color, 0.3s;
+	border: 2px solid #D2DDE5;
+	margin-top: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+	border-color: #41586e;
+}
+
+.help-block {
+	font-size: 1.1rem;
+}
+
+ul.errorlist li {
+	color: #b94a48;
+	list-style-type: none;
+	padding-left: 0;
+	font-size: 1.1rem;
+}
+
+input[type="checkbox"] {
+	width: auto;
+	float: left;
+}
+
+input[type="checkbox"]+p.help-block {
+	font-size: 1.4rem;
+}
+
+.form-horizontal .control-group {
+	margin-bottom: 1rem;
+}
+
+/* ===RESPONSIVE FORMS=== */
+@media ( min-width : 43.75em) {
+	.form-horizontal label, .form-horizontal p.help-block, .form-horizontal ul.errorlist
+		{
+		float: left;
+		width: 30%;
+	}
+	.form-horizontal input, .form-horizontal textarea, .form-horizontal select
+		{
+		float: right;
+		width: 70%;
+	}
+	.form-horizontal #id_license+p.help-block {
+		width: 70%;
+		float: right;
+	}
+	.form-horizontal input[type="checkbox"] {
+		float: left;
+		width: auto;
+	}
+	.form-horizontal input[type="checkbox"]+p.help-block {
+		width: 65%;
+		float: right;
+	}
+}
+/* ===BUTTONS=== */
+button, .button {
+	border: 0;
+	/*display: inline-block;*/
+	margin: 1rem;
+	margin-left: 0;
+	color: #fff;
+	cursor: pointer;
+	-moz-transition: background 0.2s;
+	-o-transition: background 0.2s;
+	-webkit-transition: background 0.2s;
+	transition: background 0.2s;
+	background-color: #91acc0;
+}
+
+button:hover, button:focus, button:active, .button:hover, .button:focus,
+	.button:active {
+	background-color: #7194ad;
+	color: #fff;
+}
+
+button.button-primary, .button.button-primary {
+	background-color: #155183;
+}
+
+button.button-primary:hover, button.button-primary:active, button.button-primary:focus,
+	.button.button-primary:hover, .button.button-primary:active, .button.button-primary:focus
+	{
+	background: #41586e;
+}
+/* ===MISC=== */
+.hidden {
+	display: none;
+}
