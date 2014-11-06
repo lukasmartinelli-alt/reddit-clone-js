@@ -1,4 +1,4 @@
-# Reddit Clone [![Build Status](https://travis-ci.org/lukasmartinelli/reddit-clone.svg?branch=master)](https://travis-ci.org/lukasmartinelli/reddit-clone)
+# Reddit Clone [![Build Status](https://travis-ci.org/lukasmartinelli/reddit-clone-js.svg)](https://travis-ci.org/lukasmartinelli/reddit-clone-js)
 
 This is a Single Page App built with Backbone on the client side
 and Node on the server side.
@@ -13,10 +13,17 @@ in the [Internet Technologies](http://studien.hsr.ch/allModules/23331_M_IntTe.ht
 ## Requirements
 
 You should have NodeJS and npm installed.
+For testing and linting the project you need Grunt.
 
 ## Run Project
 
 ```
 npm install
 node server.js
+```
+
+# Test Project
+
+```
+grunt test
 ```
