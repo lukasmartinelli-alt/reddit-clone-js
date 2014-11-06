@@ -1,0 +1,14 @@
+/* ===NAVBAR=== */
+.navbar h1 {
+    display: inline;
+}
+
+.navbar-brand {
+    padding-top: 8px;
+}
+
+.navbar-brand > img {
+    margin-top: -10px;
+    display: inline;
+    height: 40px;
+}
