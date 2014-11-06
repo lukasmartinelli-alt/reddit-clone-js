@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pr="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:my="http://java.sun.com/jsf/composite/widgets" >
+	<cc:interface componentType="commentEntry">
+		<cc:attribute name="value" required="true"/>
+	</cc:interface>
+	<cc:implementation>
+		<div class="comment">
+			<h:form>
+				<h:panelGroup id="voteData">
+					<div class="votebuttons"
+						title="#{cc.comment.votes.votesCount} Votes">
+						<h:commandLink action="#{cc.comment.votes.upVote(userBean.currentUser)}">
+							<h:graphicImage
+								styleClass='upvote #{cc.comment.votes.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
+								value="resources/images/caret-top.svg" />
+							<f:ajax render="@this voteData" />
+						</h:commandLink>
+						<span class="vote_sum">#{cc.comment.votes.votesCount}</span>
+						<h:commandLink action="#{cc.comment.votes.downVote(userBean.currentUser)}">
+							<h:graphicImage
+								styleClass='downvote #{cc.comment.votes.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
+								value="resources/images/caret-bottom.svg" />
+							<f:ajax render="@this voteData" />
+						</h:commandLink>
+					</div>
+				</h:panelGroup>			
+			</h:form>
+			<div class="comment-wrapper">
+				<p class="comment-author">
+					#{cc.timeAgo} <em>#{cc.comment.author.name}</em>
+				</p>
+				<p class="comment-text">
+					#{cc.comment.text}
+				</p>
+				<h:form styleClass="comment-form">
+					<em><a href="#" class="comment-create-link">add comment</a></em>
+					<h:inputTextarea styleClass="hidden" cols="30" rows="2" value="#{cc.newText}" />
+					<h:outputText id="display" />
+					<h:commandButton styleClass="hidden" value="Comment" action="#{cc.addComment()}">
+					</h:commandButton>
+				</h:form>
+			</div>	
+		</div>
+	</cc:implementation>
+</ui:composition>

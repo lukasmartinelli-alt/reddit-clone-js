@@ -1,0 +1,44 @@
+
+<ui:composition template="/WEB-INF/templates/base.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:my="http://java.sun.com/jsf/composite/widgets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pr="http://primefaces.org/ui" >
+	<ui:define name="title">Reddit Comments</ui:define>
+	<ui:define name="content">
+	<f:metadata>
+        <f:viewParam name="id" value="#{redditViewBean.id}" />
+    </f:metadata>
+	<my:redditEntry value="#{redditViewBean.reddit}"/>
+	<div class="comments">
+		<h:form styleClass="comment-form">
+			<em><a href="#" class="comment-create-link">add comment</a></em>
+			<h:inputTextarea styleClass="hidden" cols="30" rows="2" value="#{redditViewBean.newText}" />
+			<h:outputText id="display" />
+			<h:commandButton styleClass="hidden" value="Comment" action="#{redditViewBean.addComment()}">
+			</h:commandButton>
+		</h:form>
+		<hr />
+		<ui:repeat value="#{redditViewBean.reddit.comments}" var="comment">
+			<my:commentEntry value="#{comment}" />
+			<div class="comments">
+				<ui:repeat value="#{comment.subComments}" var="subComment">
+					<my:commentEntry value="#{subComment}" />
+					<div class="comments">
+						<ui:repeat value="#{subComment.subComments}" var="subSubComment">
+							<my:commentEntry value="#{subSubComment}" />
+						</ui:repeat>
+					</div>
+				</ui:repeat>
+			</div>
+		</ui:repeat>
+    </div>
+	</ui:define>
+	<ui:define name="scripts">
+		<h:outputScript library="js" name="comment-form.js" />
+	</ui:define>
+</ui:composition>

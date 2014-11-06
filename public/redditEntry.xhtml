@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pr="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<cc:interface componentType="redditEntry">
+		<cc:attribute name="value"  />
+	</cc:interface>
+	<cc:implementation>
+		<h:form>
+		<div class="reddit">
+			<h:panelGroup id="voteData">
+				<div class="votebuttons"
+					title="#{cc.reddit.votes.votesCount} Votes">
+					<h:commandLink action="#{cc.reddit.votes.upVote(userBean.currentUser)}">
+						<h:graphicImage
+							styleClass='upvote #{cc.reddit.votes.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
+							value="resources/images/caret-top.svg" />
+						<f:ajax render="@this voteData" />
+					</h:commandLink>
+					<span class="vote_sum">#{cc.reddit.votes.votesCount}</span>
+					<h:commandLink action="#{cc.reddit.votes.downVote(userBean.currentUser)}">
+						<h:graphicImage
+							styleClass='downvote #{cc.reddit.votes.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
+							value="resources/images/caret-bottom.svg" />
+						<f:ajax render="@this voteData" />
+					</h:commandLink>
+
+
+				</div>
+			</h:panelGroup>
+			<div class="reddit-wrapper">
+				<h:outputLink value="#{cc.reddit.link}">
+					<h2>#{cc.reddit.title}</h2>
+				</h:outputLink>
+
+				<p>
+					#{cc.timeAgo} <em>#{cc.reddit.user.name}</em>
+				</p>
+				<p>
+					<em>
+						<h:link outcome="RedditView.xhtml">
+							<h:outputText value="#{cc.reddit.commentsCount} comments"></h:outputText>
+							<f:param name="id" value="#{cc.reddit.id}"></f:param>
+						</h:link>
+					</em>
+				</p>
+			</div>
+		</div>
+
+		
+		</h:form>
+	</cc:implementation>
+</ui:composition>

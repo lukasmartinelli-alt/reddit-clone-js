@@ -1,0 +1,21 @@
+<ui:composition template="/WEB-INF/templates/base.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	<ui:define name="title">Create new Reddit</ui:define>
+	<ui:define name="content">
+		<div class="new-reddit">
+		<h1>Submit a new Link</h1>
+			<h:form rendered="#{userBean.loggedIn}">
+				<h:inputText p:placeholder="Title" value="#{redditCreateBean.title}"></h:inputText>
+				<h:inputText p:placeholder="URL" value="#{redditCreateBean.link}"></h:inputText>
+				<br />
+				<h:commandButton styleClass="button button-primary" value="Submit new Link" action="#{redditCreateBean.save}"></h:commandButton>
+				<br />
+				<h:outputText value="#{redditCreateBean.message}"></h:outputText>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

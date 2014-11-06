@@ -1,0 +1,22 @@
+
+<ui:composition template="/WEB-INF/templates/base.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:my="http://java.sun.com/jsf/composite/widgets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pr="http://primefaces.org/ui" >
+	<ui:define name="title">Reddit Table</ui:define>
+	<ui:define name="content">
+		<div class="new-reddit">
+		<h1>Entries</h1>
+			<h:form>
+				<c:forEach var="item" items="#{redditTableBean.reddits}">
+					<my:redditEntry value="#{item}" />
+				</c:forEach>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

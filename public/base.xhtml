@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	 xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<title><ui:insert name="title">Reddit Clone</ui:insert></title>
+	<link href='http://fonts.googleapis.com/css?family=Istok+Web:400,700'
+		rel='stylesheet' type='text/css' />
+	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico" />
+	<h:outputStylesheet library="css" name="base.css" />
+	<h:outputStylesheet library="css" name="layout.css" />
+	<h:outputStylesheet library="css" name="modules.css" />
+</h:head>
+<h:body>
+<f:view locale="#{userBean.userLocale}">
+	<div class="header">
+		<div class="branding">
+			<h:link outcome="RedditTable">
+				<h1>
+					<h:graphicImage value="resources/images/reddit.png" />
+					<em>reddit</em>clone
+				</h1>
+			</h:link>
+		</div>
+		<div class="login">
+			<h:form rendered="#{userBean.isLoggedIn() == false}">
+				<h:inputText value="#{loginBean.username}" p:placeholder="Username"></h:inputText>
+				<h:inputSecret value="#{loginBean.password}" p:placeholder="Password"></h:inputSecret>
+				<h:commandButton action="#{loginBean.register}" styleClass="button" value="Registrieren"
+					type="submit" />
+				<h:commandButton action="#{loginBean.login}" styleClass="button button-primary" value="Login"
+					type="submit" />
+			</h:form>
+		</div>
+		<h:form styleClass="logout">
+			<h:commandLink rendered="#{userBean.isLoggedIn()}" styleClass="button button-primary" value="Logout" action="#{loginBean.logOut}" />
+		</h:form>
+		<div class="submit">
+			<h:link outcome="NewReddit" value="#{msg['post']}" rendered="#{userBean.isLoggedIn()}" styleClass="button"></h:link>
+		</div>
+	</div>
+	<div class="main">
+		<ui:insert name="content"></ui:insert>
+		<h:form class="language-chooser">
+			<h:commandLink styleClass="button button-primary" value="DE" action="#{userBean.setGerman()}" />
+			<h:commandLink styleClass="button button-primary" value="EN" action="#{userBean.setEnglish()}" />
+		</h:form>
+	</div>
+	<h:outputScript library="js" name="svg-injector.js" />
+	<ui:insert name="scripts"></ui:insert>
+	<script type="text/javascript">
+		var mySVGsToInject = document.querySelectorAll('.upvote, .downvote');
+		SVGInjector(mySVGsToInject);
+	</script>
+	</f:view>
+</h:body>
+</html>
