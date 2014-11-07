@@ -12,3 +12,56 @@
     display: inline;
     height: 40px;
 }
+
+/* ===REDDITS=== */
+.reddit {
+    position: relative;
+    display:block;
+    min-height: 5rem;
+    margin-bottom: 2rem;
+}
+
+form.comment-form {
+    max-width:56rem;
+}
+
+.reddit .reddit-wrapper {
+    padding-left: 6rem;
+}
+
+.reddit .votebuttons {
+    position: absolute;
+    z-index: 2;
+}
+
+
+
+/* ===VOTE BUTTONS=== */
+.votebuttons {
+    text-align: center;
+    width: 5rem;
+}
+
+.votebuttons .upvote, .votebuttons .downvote {
+    width: 3.2rem;
+    height: 3.2rem;
+    fill: #4F4A4A;
+}
+
+.votebuttons .upvote:hover, .votebuttons .downvote:hover {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.votebuttons .upvote:hover, .votebuttons .upvote.active {
+    fill: #4BC35F;
+}
+
+.votebuttons .downvote:hover, .votebuttons .downvote.active {
+    fill: #C15044;
+}
+
+.votebuttons .vote_sum {
+    font-size: 3.6rem;
+    font-family: "Droid Sans", sans-serif;
+}
