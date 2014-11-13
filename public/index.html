@@ -22,14 +22,14 @@
               </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-              <form class="navbar-form navbar-right" role="form">
+              <form ng-controller="userController" class="navbar-form navbar-right" role="form">
                 <div class="form-group">
-                  <input placeholder="Email" class="form-control" type="text">
+                  <input ng-model="username" placeholder="Email" class="form-control" type="text">
                 </div>
                 <div class="form-group">
-                  <input placeholder="Password" class="form-control" type="password">
+                  <input ng-model="password" placeholder="Password" class="form-control" type="password">
                 </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
+                <button ng-click="login()" type="submit" class="btn btn-success">Sign in</button>
                 <button type="submit" class="btn">Register</button>
               </form>
             </div><!--/.navbar-collapse -->
@@ -78,5 +78,6 @@
        <script src="init.js"></script>
        <script src="ui.js"></script>
         <script src="myAngularRouting.js"></script>
+        <script src="controllers/userController.js"></script>
    </body>
 </html>
