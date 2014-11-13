@@ -1,5 +1,4 @@
-angular.module('redditclone', [])
-.controller('userController', ['$scope', '$http', function($scope, $http) {
+redditclone.controller('userController', ['$scope', '$http', function($scope, $http) {
     $scope.username = "";
     $scope.password = "";
     $scope.loggedIn = false;
