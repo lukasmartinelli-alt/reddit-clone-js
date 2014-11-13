@@ -22,7 +22,7 @@
               </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-              <form ng-controller="userController" class="navbar-form navbar-right" role="form">
+              <form ng-show="loggedIn" ng-controller="userController" class="navbar-form navbar-right" role="form">
                 <div class="form-group">
                   <input ng-model="username" placeholder="Email" class="form-control" type="text">
                 </div>
@@ -30,7 +30,7 @@
                   <input ng-model="password" placeholder="Password" class="form-control" type="password">
                 </div>
                 <button ng-click="login()" type="submit" class="btn btn-success">Sign in</button>
-                <button type="submit" class="btn">Register</button>
+                <button ng-click="register()" type="submit" class="btn">Register</button>
               </form>
             </div><!--/.navbar-collapse -->
           </div>
