@@ -1,6 +1,5 @@
-var redditclone = angular.module('redditclone',['ngRoute']);
-
-redditclone.config(['$routeProvider',
+angular.module('redditclone',['ngRoute'])
+.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/', {
