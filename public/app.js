@@ -14,6 +14,10 @@ redditclone.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'view/entry.html'
             //   controller: 'ShowOrdersController'
         }).
+        when('/newReddit', {
+            templateUrl: 'view/newReddit.html'
+            //   controller: 'ShowOrdersController'
+        }).
         when('/404', {
             templateUrl: 'view/404.html'
             //   controller: 'ShowOrdersController'
