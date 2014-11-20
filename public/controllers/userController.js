@@ -1,24 +1,16 @@
-redditclone.controller('userController', ['$scope', '$http', function($scope, $http) {
-    $scope.username = "";
-    $scope.password = "";
+redditclone.controller('userController', ['$scope', '$http', 'loginService',
+ function($scope, $http, loginService) {
     $scope.loggedIn = false;
 
     $scope.login = function() {
-        $http.post('/login', { "name": $scope.username, "password": $scope.password })
-            .success(function(data, status, headers, config) {
-                console.log("User " + $scope.username + " logged in");
-                $scope.loggedIn = true;
-            })
-            .error(function(data, status, headers, config) {
-                $scope.loggedIn = false;
-            });
+        loginService.login($scope.username, $scope.password, function() {
+            $scope.loggedIn = loginService.loggedIn;
+        });
     };
     $scope.register = function() {
-        $http.post('/register', { "name": $scope.username, "password": $scope.password })
-            .success(function(data, status, headers, config) {
-                console.log("User " + $scope.username + " registered");
-                $scope.login();
-            });
+        loginService.register($scope.username, $scope.password, function() {
+            $scope.loggedIn = loginService.loggedIn;
+        });
     };
 
 }]);
