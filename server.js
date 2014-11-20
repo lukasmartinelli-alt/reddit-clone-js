@@ -120,7 +120,7 @@ app.get('/login', function (req, res) {
 
 
 app.post('/entry', function(req, res) {
-    var newLink = new Link(entries.length, req.body.title, users[req.session.user_id].name, req.body.url);	
+    var newLink = new Link(entries.length, req.body.title, req.body.username, req.body.url);	
  	entries.push(newLink);
  	res.json(newLink);
  	io.sockets.emit('message', { action: "AddLink" });
