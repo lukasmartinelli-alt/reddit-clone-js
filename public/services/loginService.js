@@ -3,7 +3,7 @@ redditclone.factory('loginService', ['$http', function($http) {
         loggedIn: false,
         user: { username: "", password: "" },
         login: function(username, password, callback) {
-            $http.post('/login', { "name": name, "password": password })
+            $http.post('/login', { "name": username, "password": password })
             .success(function(data, status, headers, config) {
                 console.log("User " + username + " logged in");
                 this.loggedIn = true;
@@ -15,7 +15,7 @@ redditclone.factory('loginService', ['$http', function($http) {
             }.bind(this));
         },
         register: function(username, password, callback) {
-            $http.post('/register', { "name": name, "password": password })
+            $http.post('/register', { "name": username, "password": password })
             .success(function(data, status, headers, config) {
                 console.log("User " + username + " registered");
                 this.login(name, pasword);
