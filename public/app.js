@@ -3,8 +3,8 @@ var redditclone = angular.module('redditclone', ['ngRoute']);
 redditclone.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
     when('/', {
-            templateUrl: 'view/table.html'
-            //   controller: 'ShowOrdersController'
+            templateUrl: 'view/table.html',
+            controller: 'redditListController',
         }).
         when('/new', {
             templateUrl: 'view/new.html'

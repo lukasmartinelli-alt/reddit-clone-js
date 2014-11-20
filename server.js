@@ -33,10 +33,15 @@ var users = [];
 var comments = [];
 
 //sample data
+
 entries.push(new Link(entries.length, "Title", "Author", "http://www.google.ch"));
 var comment = new Comment(0, "TestComment", "Author");
 comments.push(comment);
 entries[0].comments.push(comment);
+
+var entry1 = new Link(entries.length, "Dorfmarkt knackt Umsatzrekord", "Piter Sommerlat", "http://www.20min.ch");
+entry1.rating._up(users[0]);
+entries.push(entry1);
 
 //default user
 users.push(new User(users.length, "a", "a") );
