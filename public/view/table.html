@@ -20,13 +20,41 @@
                 <p>
                     {{ reddit.timeAgo }} by <em>{{ reddit.author }}</em>
                 </p>
-                <p ng-show="sdfsad">
-                    <em>
-                        <a href="#">
-                            <p>{{reddit.commentsCount}} comments</p>
-                        </a>
-                    </em>
-                </p>
+                <div ng-hide="reddit.areCommentsVisible">
+                    <p>
+                        <em>
+                            <a href="" ng-click="reddit.areCommentsVisible = true">
+                                <p>{{reddit.commentsCount}} comments</p>
+                            </a>
+                        </em>
+                    </p>
+                </div>
+                <div ng-show="reddit.areCommentsVisible">
+                    <div class="redditComments row" ng-repeat="comment in reddit.comments">
+                        <div class="col-sx-4">
+                            <div class="votebuttons"
+                                 title="{{ comment.rating.value }} Votes">
+                                <a href="#">
+                                    <img src="images/caret-top.svg" />
+                                </a>
+                                <span class="vote_sum">{{ comment.rating.value }}</span>
+                                <a href="#">
+                                    <img src="images/caret-bottom.svg" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sx-8">
+                            <div class="commentText">
+                                <p>{{comment.author}} {{comment.createTimeDisplay}}</p>
+                                <p>{{comment.text}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form   ng-submit="reddit.submitNewComment()">
+                        <input placeholder="Your Comment" class="form-control" type="text" name="newComment" ng-model="reddit.newCommentText"><br>
+                        <input type="submit" value="Submit" class="btn">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
