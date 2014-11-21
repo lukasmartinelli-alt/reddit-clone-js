@@ -133,6 +133,7 @@ app.get('/entry/:id', function(req, res) {
 app.post('/entry/:id/up', checkAuth, function (req, res) {
     res.json(entries[req.params.id].rating._up(req.session.user_id));
     io.sockets.emit('message', { action: "Rated" });
+    voteState(entries[req.params.id]);
 });
 
 app.post('/entry/:id/down', checkAuth, function (req, res) {
@@ -163,6 +164,7 @@ app.post('/comment/:id/', checkAuth, function (req, res) {
 app.post('/comment/:id/up', checkAuth, function (req, res) {
     res.json(comments[req.params.id].rating._up(req.session.user_id));
     io.sockets.emit('message', { action: "Rated" });
+    voteState(comments[req.params.id]);
 });
 
 app.post('/comment/:id/down', checkAuth, function (req, res) {
@@ -182,6 +184,32 @@ io = io.listen(app.listen(process.env.PORT || 4730));
 
 io.sockets.on('connection', function (socket) {
     socket.emit('message', { action: 'connected' });
+
+    socket.on('upEntry', function(ids){
+        entries[ids.eId].rating._up(ids.uId);
+        console.log("upEntry");
+        voteEntryState(entries[ids.eId]);
+    });
+
+    socket.on('downEntry', function(ids){
+        entries[ids.eId].rating._down(ids.uId);
+        console.log("downEntry");
+        voteEntryState(entries[ids.eId]);
+    });
+
+
+    socket.on('upComment', function(ids){
+        entries[ids.eId].comments[ids.cId].rating._down(ids.uId);
+        console.log("upComment");
+        voteEntryState(entries[ids.eId]);
+    });
+
+    socket.on('downComment', function(ids){
+        entries[ids.eId].comments[ids.cId].rating._down(ids.uId);
+        console.log("downComment");
+        voteEntryState(entries[ids.eId]);
+    });
+
 });
 
 io.sockets.on('disconnect', function (socket) {
@@ -189,4 +217,8 @@ io.sockets.on('disconnect', function (socket) {
 });
 
 
+voteEntryState = function(entry){
+    console.log(entry);
+    io.sockets.emit('voteEntryState',  entry);
+};
 

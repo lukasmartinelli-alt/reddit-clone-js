@@ -4,13 +4,13 @@
         <div class="reddit">
             <div class="votebuttons"
                  title="{{ reddit.votesCount }} Votes">
-                <a href="#">
+                <div ng-click="upEntry(reddit.id)">
                     <img src="images/caret-top.svg" />
-                </a>
+                </div>
                 <span class="vote_sum">{{ reddit.rating.value }}</span>
-                <a href="#">
+                <div ng-click="downEntry(reddit.id)">
                     <img src="images/caret-bottom.svg" />
-                </a>
+                </div>
             </div>
             <div class="reddit-wrapper">
                 <a href="{{reddit.url}}">
@@ -34,13 +34,13 @@
                         <div class="col-sx-4">
                             <div class="votebuttons"
                                  title="{{ comment.rating.value }} Votes">
-                                <a href="#">
+                                <div ng-click="upComment(comment.id, reddit.id)">
                                     <img src="images/caret-top.svg" />
-                                </a>
+                                </div>
                                 <span class="vote_sum">{{ comment.rating.value }}</span>
-                                <a href="#">
+                                <div ng-click="downComment(comment.id, reddit.id)">
                                     <img src="images/caret-bottom.svg" />
-                                </a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sx-8">

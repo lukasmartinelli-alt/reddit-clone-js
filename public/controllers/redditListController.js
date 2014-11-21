@@ -1,5 +1,37 @@
-redditclone.controller('redditListController', ['$scope', '$http', function($scope, $http) {
+redditclone.controller('redditListController', ['$scope', '$http', 'socketService', 'loginService', function($scope, $http, socketService, loginService) {
     $scope.reddits = [];
+
+    $scope.upEntry = function(entryId) {
+        if(loginService.loggedIn) {
+            socketService.emit('upEntry', {eId: entryId, uId: loginService.user_id});
+        }
+    };
+
+    $scope.downEntry = function(entryId) {
+        if(loginService.loggedIn) {
+            socketService.emit('downEntry', {eId: entryId, uId: loginService.user_id});
+        }
+    };
+
+    $scope.upComment = function(commentId, redditId) {
+        if(loginService.loggedIn) {
+            socketService.emit('upComment', {cId: commentId, eId: redditId, uId: loginService.user_id});
+        }
+    };
+
+    $scope.downComment = function(commentId, redditId) {
+        if(loginService.loggedIn) {
+            socketService.emit('downComment', {cId: commentId, eId: redditId, uId: loginService.user_id});
+        }
+    };
+
+    socketService.on('voteEntryState', function(reddit){
+        $scope.reddits[reddit.id] = reddit;
+    });
+
+    socketService.on('voteCommentState', function(comment){
+        $scope.reddits[reddit.id].comments[comment.id].ra = comment.rating.value;
+    });
 
     $http.get('/entries')
         .success(function(data, status, headers, config) {
