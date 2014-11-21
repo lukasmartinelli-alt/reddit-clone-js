@@ -57,7 +57,8 @@ redditclone.controller('redditListController', ['$scope', '$http', 'socketServic
                 this.reddits = data;
                 console.log("Loaded2 " + this.reddits.length + " reddits");
             }.bind(this));
-        $scope.update($http);
+
     };
+    $scope.update($http);
 }]);
 
