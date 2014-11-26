@@ -1,5 +1,36 @@
+
 redditclone.controller('redditListController', ['$scope', '$http', 'socketService', 'loginService', function($scope, $http, socketService, loginService) {
     $scope.reddits = [];
+    $scope.commentAddedID = -1;
+    function extendReddit(entry) {
+        entry.areCommentsVisible = false;
+        entry.setCommentsVisible = function (){
+            this.areCommentsVisible = true;
+        };
+        entry.newCommentText = "";
+        entry.submitNewComment = function() {
+            $scope.commentAddedID = entry.id;
+            $http.post("/entry/" + entry.id + "/comment",{text:entry.newCommentText}).success(function(data, status, headers, config) {
+                console.log("comment added successfully: " + entry.newCommentText);
+
+            })
+        };
+    };
+    $scope.update = function() {
+        $http.get('/entries').success(function(data, status, headers, config) {
+                console.log("Loaded " + data.length + " reddits");
+                // Add areCommentsVisible property
+                data.forEach(function(entry) {
+                    extendReddit(entry);
+                    if(entry.id === $scope.commentAddedID) {
+                        console.log("id = " + $scope.commentAddedID);
+                        $scope.commentAddedID = -1;
+                    }
+                });
+                $scope.reddits = data;
+        });
+
+    };
 
     $scope.upEntry = function(entryId) {
         if(loginService.loggedIn) {

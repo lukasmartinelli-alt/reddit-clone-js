@@ -50,8 +50,8 @@
                             </div>
                         </div>
                     </div>
-                    <form   ng-submit="reddit.submitNewComment()">
-                        <input placeholder="Your Comment" class="form-control" type="text" name="newComment" ng-model="reddit.newCommentText"><br>
+                    <form   ng-submit="reddit.submitNewComment();update();">
+                        <input placeholder="Your Comment" class="form-control" type="text" ng-model="reddit.newCommentText"><br>
                         <input type="submit" value="Submit" class="btn">
                     </form>
                 </div>
