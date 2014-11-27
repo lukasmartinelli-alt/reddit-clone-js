@@ -1,4 +1,4 @@
-var redditclone = angular.module('redditclone', ['ngRoute']);
+var redditclone = angular.module('redditclone', ['ngRoute','pascalprecht.translate']);
 
 redditclone.config(['$routeProvider', function($routeProvider) {
     $routeProvider.

@@ -33,7 +33,9 @@
                 <button ng-click="register()" type="submit" class="btn">Register</button>
                 </form>
                 <form ng-controller="userController" ng-show="!loggedIn" class="navbar-form navbar-right" role="form">
-                    <a type="button" href="#/newReddit" class="btn btn-success" >New Reddit</a>
+                    <div ng-controller="newRedditButtonController" ng-show="isLoggedIn()">
+                        <a type="button" href="#/newReddit" class="btn btn-success" translate="newRedditButton" ></a>
+                    </div>
                 </form>
             </div><!--/.navbar-collapse -->
           </div>
@@ -59,6 +61,10 @@
            <div class="row">
              <footer>
                <p>InTe Testat von Lukas Martinelli, Samuel Kurath & Severin Bühler - HS14 HSR</p>
+                 <div ng-controller="i18nController">
+                     <a ng-click="setLanguageDE()" type="button" class="btn btn-default" >DE</a>
+                     <a ng-click="setLanguageEN()" type="button" class="btn btn-default" >EN</a>
+                 </div>
              </footer>
            </div>
         </div>
@@ -67,15 +73,17 @@
        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular-route.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bower-angular-translate/2.0.1/angular-translate.min.js"></script>
        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//cdn.jsdelivr.net/socket.io-client/1.2.0/socket.io.min.js"></script>
         <script src="app.js"></script>
+        <script src="i18n/ng-translate.js"></script>
         <script src="services/loginService.js"></script>
-        <script src="controllers/voteController.js"></script>
         <script src="services/socketService.js"></script>
         <script src="controllers/userController.js"></script>
         <script src="controllers/newRedditController.js"></script>
         <script src="controllers/redditListController.js"></script>
+        <script src="controllers/newRedditButtonController.js"></script>
         <script src="directives/reddit/controller.js"></script>
    </body>
 </html>
