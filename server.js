@@ -199,7 +199,7 @@ io.sockets.on('connection', function (socket) {
 
 
     socket.on('upComment', function(ids){
-        entries[ids.eId].comments[ids.cId].rating._down(ids.uId);
+        entries[ids.eId].comments[ids.cId - 1].rating._down(ids.uId);
         console.log("upComment");
         voteEntryState(entries[ids.eId]);
     });
