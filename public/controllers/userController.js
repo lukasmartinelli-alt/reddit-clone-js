@@ -13,4 +13,10 @@ redditclone.controller('userController', ['$scope', '$http', 'loginService',
         });
     };
 
+    if(sessionStorage.user) {
+        var user = sessionStorage.user;
+        $scope.username = user.username;
+        $scope.password = user.password;
+        $scope.login();
+    }
 }]);

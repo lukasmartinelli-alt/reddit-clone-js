@@ -8,6 +8,7 @@ redditclone.factory('loginService', ['$http', function($http) {
                 console.log("User " + username + " logged in");
                 this.loggedIn = true;
                 this.user = { username: username, password: password };
+                sessionStorage.user = this.user;
                 callback();
             }.bind(this))
             .error(function(data, status, headers, config) {
