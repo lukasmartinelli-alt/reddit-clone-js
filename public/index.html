@@ -32,7 +32,8 @@
                 <button ng-click="login()" type="submit" class="btn btn-success">Sign in</button>
                 <button ng-click="register()" type="submit" class="btn">Register</button>
                 </form>
-                <form ng-controller="userController" ng-show="!loggedIn" class="navbar-form navbar-right" role="form">
+                <form ng-controller="userController" ng-show="loggedIn" class="navbar-form navbar-right" role="form">
+                    <button ng-click="logout()" type="submit" class="btn">Logout</button>
                     <div ng-controller="newRedditButtonController" ng-show="isLoggedIn()">
                         <a type="button" href="#/newReddit" class="btn btn-success" translate="newRedditButton" ></a>
                     </div>
