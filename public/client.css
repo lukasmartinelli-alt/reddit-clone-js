@@ -34,7 +34,14 @@ form.comment-form {
     z-index: 2;
 }
 
+.redditComments .votebuttons {
+}
 
+.commentText {
+    min-height: 5rem;
+    padding-left: 5rem;
+    margin-bottom: 3em;
+}
 
 /* ===VOTE BUTTONS=== */
 .votebuttons {
@@ -43,8 +50,8 @@ form.comment-form {
 }
 
 .votebuttons img {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 2rem;
+    height: 2rem;
     fill: #4F4A4A;
 }
 

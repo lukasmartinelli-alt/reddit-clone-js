@@ -43,14 +43,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sx-8">
-                            <div class="commentText">
+                        <div class="col-sx-8 commentText">
                                 <p>{{comment.author}} {{comment.createTimeDisplay}}</p>
                                 <p>{{comment.text}}</p>
-                            </div>
                         </div>
                     </div>
-                    <form ng-show="isLoggedIn()"   ng-submit="reddit.submitNewComment();update();">
+                    <form class="commentForm" ng-show="isLoggedIn()"   ng-submit="reddit.submitNewComment();update();">
                         <input placeholder="Your Comment" class="form-control" type="text" ng-model="reddit.newCommentText"><br>
                         <input type="submit" value="Submit" class="btn">
                     </form>
