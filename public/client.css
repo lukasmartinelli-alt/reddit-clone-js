@@ -42,13 +42,13 @@ form.comment-form {
     width: 5rem;
 }
 
-.votebuttons .upvote, .votebuttons .downvote {
+.votebuttons img {
     width: 3.2rem;
     height: 3.2rem;
     fill: #4F4A4A;
 }
 
-.votebuttons .upvote:hover, .votebuttons .downvote:hover {
+.votebuttons img:hover {
     cursor: pointer;
     cursor: hand;
 }
