@@ -54,12 +54,15 @@ redditclone.controller('redditListController', ['$scope', '$http', 'socketServic
     };
 
     $scope.downComment = function(commentId, redditId) {
+        console.log("comment von id: " + commentId);
         if(loginService.loggedIn) {
             socketService.emit('downComment', {cId: commentId, eId: redditId, uId: loginService.user_id});
         }
     };
 
     socketService.on('voteEntryState', function(reddit){
+        extendReddit(reddit);
+        reddit.setCommentsVisible();
         $scope.reddits[reddit.id] = reddit;
     });
 
