@@ -205,7 +205,8 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('downComment', function(ids){
-        entries[ids.eId].comments[ids.cId].rating._down(ids.uId);
+       // console.log("reddit: " + ids.eId + ", comment: " + ids.cId + ", length: " + entries[ids.eId].comments.length)
+        entries[ids.eId].comments[ids.cId -1].rating._down(ids.uId);
         console.log("downComment");
         voteEntryState(entries[ids.eId]);
     });
