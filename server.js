@@ -199,14 +199,15 @@ io.sockets.on('connection', function (socket) {
 
 
     socket.on('upComment', function(ids){
-        entries[ids.eId].comments[ids.cId - 1].rating._down(ids.uId);
+        var index = getCommentArrayIndex(ids.cId);
+        comments[index].rating._up(ids.uId);
         console.log("upComment");
         voteEntryState(entries[ids.eId]);
     });
 
     socket.on('downComment', function(ids){
-       // console.log("reddit: " + ids.eId + ", comment: " + ids.cId + ", length: " + entries[ids.eId].comments.length)
-        entries[ids.eId].comments[ids.cId -1].rating._down(ids.uId);
+        var index = getCommentArrayIndex(ids.cId);
+        comments[index].rating._down(ids.uId);
         console.log("downComment");
         voteEntryState(entries[ids.eId]);
     });
@@ -221,5 +222,16 @@ io.sockets.on('disconnect', function (socket) {
 voteEntryState = function(entry){
     console.log(entry);
     io.sockets.emit('voteEntryState',  entry);
+};
+
+
+getCommentArrayIndex = function(id){
+    for(i = 0; i < comments.length; i++){
+       if(comments[i].id == id) {
+           console.log("index: " + i);
+           return i;
+       }
+    }
+    return -1
 };
 

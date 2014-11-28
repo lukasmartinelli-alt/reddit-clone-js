@@ -54,7 +54,6 @@ redditclone.controller('redditListController', ['$scope', '$http', 'socketServic
     };
 
     $scope.downComment = function(commentId, redditId) {
-        console.log("comment von id: " + commentId);
         if(loginService.loggedIn) {
             socketService.emit('downComment', {cId: commentId, eId: redditId, uId: loginService.user_id});
         }
@@ -65,12 +64,6 @@ redditclone.controller('redditListController', ['$scope', '$http', 'socketServic
         reddit.setCommentsVisible();
         $scope.reddits[reddit.id] = reddit;
     });
-
-    socketService.on('voteCommentState', function(comment){
-        $scope.reddits[reddit.id].comments[comment.id].ra = comment.rating.value;
-    });
-
-
     $scope.update();
 }]);
 
