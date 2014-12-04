@@ -37,19 +37,19 @@ redditclone.controller('redditListController', ['$scope', '$http', 'socketServic
 
     $scope.upEntry = function(entryId) {
         if(loginService.loggedIn) {
-            socketService.emit('upEntry', {eId: entryId, uId: loginService.user_id});
+            socketService.emit('upEntry', {eId: entryId, uId: loginService.user.username});
         }
     };
 
     $scope.downEntry = function(entryId) {
         if(loginService.loggedIn) {
-            socketService.emit('downEntry', {eId: entryId, uId: loginService.user_id});
+            socketService.emit('downEntry', {eId: entryId, uId: loginService.user.username});
         }
     };
 
     $scope.upComment = function(commentId, redditId) {
         if(loginService.loggedIn) {
-            socketService.emit('upComment', {cId: commentId, eId: redditId, uId: loginService.user_id});
+            socketService.emit('upComment', {cId: commentId, eId: redditId, uId: loginService.user.username});
         }
     };
 
