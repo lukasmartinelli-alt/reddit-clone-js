@@ -186,13 +186,13 @@ io.sockets.on('connection', function (socket) {
     socket.emit('message', { action: 'connected' });
 
     socket.on('upEntry', function(ids){
-        entries[ids.eId].rating._up(ids.uId);
+        entries[ids.eId].rating._up(getUserIdByName(ids.uId));
         console.log("upEntry");
         voteEntryState(entries[ids.eId]);
     });
 
     socket.on('downEntry', function(ids){
-        entries[ids.eId].rating._down(ids.uId);
+        entries[ids.eId].rating._down(getUserIdByName(ids.uId));
         console.log("downEntry");
         voteEntryState(entries[ids.eId]);
     });
@@ -200,14 +200,14 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('upComment', function(ids){
         var index = getCommentArrayIndex(ids.cId);
-        comments[index].rating._up(ids.uId);
+        comments[index].rating._up(getUserIdByName(ids.uId));
         console.log("upComment");
         voteEntryState(entries[ids.eId]);
     });
 
     socket.on('downComment', function(ids){
         var index = getCommentArrayIndex(ids.cId);
-        comments[index].rating._down(ids.uId);
+        comments[index].rating._down(getUserIdByName(ids.uId));
         console.log("downComment");
         voteEntryState(entries[ids.eId]);
     });
@@ -227,11 +227,20 @@ voteEntryState = function(entry){
 
 getCommentArrayIndex = function(id){
     for(i = 0; i < comments.length; i++){
-       if(comments[i].id == id) {
+       if(comments[i].id === id) {
            console.log("index: " + i);
            return i;
        }
     }
-    return -1
+    return -1;
 };
+
+getUserIdByName = function(name){
+    for(i = 0; i < users.length; i++){
+        if(users[i].name ===  name){
+            return i;
+        }
+    }
+    return -1;
+}
 
