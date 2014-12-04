@@ -25,8 +25,9 @@ redditclone.factory('loginService', ['$http', function($http) {
             $http.post('/register', { "name": username, "password": password })
             .success(function(data, status, headers, config) {
                 console.log("User " + username + " registered");
-                this.login(name, pasword);
-                callback();
+                this.login(name, password, function() {
+                    callback();
+                });
             }.bind(this))
             .error(function(data, status, headers, config) {
                 this.loggedIn = false;
