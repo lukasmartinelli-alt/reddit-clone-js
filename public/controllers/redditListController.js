@@ -55,7 +55,7 @@ redditclone.controller('redditListController', ['$scope', '$http', 'socketServic
 
     $scope.downComment = function(commentId, redditId) {
         if(loginService.loggedIn) {
-            socketService.emit('downComment', {cId: commentId, eId: redditId, uId: loginService.user_id});
+            socketService.emit('downComment', {cId: commentId, eId: redditId, uId: loginService.user.username);
         }
     };
 
