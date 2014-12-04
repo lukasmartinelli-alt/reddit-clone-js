@@ -5,7 +5,6 @@ redditclone.controller('userController', ['$scope', '$http', 'loginService',
     $scope.logout = function() {
         loginService.logout();
         $scope.loggedIn = false;
-        $scope.loggedIn = loginService.loggedIn;
     };
 
     $scope.login = function() {
