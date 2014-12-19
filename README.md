@@ -1,6 +1,6 @@
 # Reddit Clone [![Build Status](https://travis-ci.org/lukasmartinelli/reddit-clone-js.svg)](https://travis-ci.org/lukasmartinelli/reddit-clone-js)
 
-This is a Single Page App built with Backbone on the client side
+This is a Single Page App built with AngularJs on the client side
 and Node on the server side.
 
 The same Project has been [realized in JSF](https://github.com/lukasmartinelli/reddit-clone).
