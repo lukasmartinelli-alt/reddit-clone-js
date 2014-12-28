@@ -22,6 +22,8 @@ npm install
 node server.js
 ```
 
+Now visit `http://localhost:4730/index.html`.
+
 # Test Project
 
 ```
